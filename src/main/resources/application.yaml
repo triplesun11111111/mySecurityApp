@@ -1,0 +1,26 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /
+
+spring:
+    jpa:
+        show-sql: true
+        open-in-view: false
+        properties:
+            hibernate:
+                ddl-auto: update
+
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/my_app?useSSL=false&serverTimezone=UTC
+        username: root
+        password: root
+
+        hikari:
+            pool-name: HikariCP
+            maximum-pool-size: 10
+
+    thymeleaf:
+        check-template-location: true
+        enabled: true
