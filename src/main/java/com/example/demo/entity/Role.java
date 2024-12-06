@@ -6,13 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import java.util.Set;
 
-@Setter
-@Getter
 @Entity
 @Data
 @Table(name = "roles")
@@ -25,20 +21,24 @@ public class Role implements GrantedAuthority{
 
     public Role() {}
 
-    public Role(Integer id, String name) {}
+    public Role(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-    public Role(Integer id) {}
+    public Role(Integer id) {
+        this.id = id;
+    }
 
     @ManyToMany(mappedBy = "roles")
     private Set <User> users;
 
     @Override
     public String getAuthority() {
-        return getRoleName();
+        return name;
     }
 
     public String getRoleName() {
         return name;
     }
-
 }
