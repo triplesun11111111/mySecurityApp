@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class RoleServiceImpl implements RoleService {
@@ -15,8 +17,8 @@ public class RoleServiceImpl implements RoleService {
         this.roleRepository = roleRepository;
     }
     @Override
-    public Role findRoleByName(String roleName) {
-        return roleRepository.findByName(roleName);
+    public Optional <Role> findRoleByName(String roleName) {
+        return Optional.ofNullable(roleRepository.findByName(roleName)); //нал пойнтер экс
     }
 
     @Override

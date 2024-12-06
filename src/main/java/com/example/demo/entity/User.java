@@ -2,8 +2,6 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,14 +15,10 @@ import java.util.Set;
 @Data
 @Table(name = "users")
 public class User implements UserDetails {
-    @Setter
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Setter
     private String username;
-    @Setter
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -34,8 +28,6 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     public Set<Role> roles = new HashSet<>();
-
-    public User() {}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,5 +67,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

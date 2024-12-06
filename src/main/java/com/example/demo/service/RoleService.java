@@ -4,9 +4,11 @@ import com.example.demo.entity.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public interface RoleService {
-    Role findRoleByName(String name);
+    Optional<Role> findRoleByName(String name);
     List<Role> findAllRoles();
     Role saveRole(Role role);
 }
