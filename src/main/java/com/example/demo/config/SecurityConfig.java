@@ -45,13 +45,7 @@ public class SecurityConfig {
                         .permitAll());
         return http.build();
     }
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider(BCryptPasswordEncoder passwordEncoder) {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder);
-        return authenticationProvider;
-    }
+
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =

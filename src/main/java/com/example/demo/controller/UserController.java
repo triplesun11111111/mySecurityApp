@@ -24,7 +24,7 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/defaultPage")
+    @GetMapping("/ ")
     public String logLevels(Authentication authentication) {
         if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER"))) {
             return "user";
